@@ -1,0 +1,9 @@
+version: '3'
+services:
+  client:
+    container_name: swoole-coroutines-client
+    image: deminy/swoole-by-examples:client
+    environment:
+      DISABLE_DEFAULT_SERVER: 1
+    volumes:
+      - ./src:/var/www
