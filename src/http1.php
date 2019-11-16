@@ -1,6 +1,7 @@
 <?php
 
 use Swoole\Coroutine\Channel;
+use Swoole\Coroutine\System;
 use Swoole\Coroutine\Http\Client;
 
 function httpHead(string $url) {
@@ -23,7 +24,7 @@ go(static function () use ($chan) {
 
     while (feof($fp) === false) {
         // Lê linha a linha do arquivo
-        $url = trim(co::fgets($fp));
+        $url = trim(System::fgets($fp));
 
         if ($url !== '') {
             // Cria uma corrotina para requisitar a URL e trazer o status code dela
