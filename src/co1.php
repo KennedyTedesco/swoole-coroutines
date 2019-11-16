@@ -3,7 +3,7 @@
 use Swoole\Coroutine\System;
 
 go(static function () {
-    System::sleep(2);
+    System::sleep(1);
     echo 'a';
 });
 
