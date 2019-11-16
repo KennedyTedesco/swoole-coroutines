@@ -1,5 +1,6 @@
 <?php
 
+use Swoole\Coroutine\System;
 use Swoole\Coroutine\Channel;
 
 $chan = new Channel();
@@ -9,7 +10,7 @@ go(static function () use ($chan) {
     for ($i = 0; $i < 10000; $i++) {
         go(static function () use ($i, $chan) {
             // Emula uma operação de I/O
-            co::sleep(1);
+            System::sleep(1);
 
             // Adiciona o valor processado no canal
             $chan->push([

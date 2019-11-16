@@ -1,8 +1,10 @@
 <?php
 
+use Swoole\Coroutine\System;
+
 // Tarefa 1
 go(static function() {
-    co::sleep(1);
+    System::sleep(1);
     for ($i = 0; $i <= 10; $i++) {
         echo "N{$i}";
     }

@@ -1,10 +1,12 @@
 <?php
 
+use Swoole\Coroutine\System;
+
 final class SomeTask
 {
     public function __invoke(int $i): void
     {
-        co::sleep(1);
+        System::sleep(1);
 
         echo "$i\n";
     }

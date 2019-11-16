@@ -1,5 +1,6 @@
 <?php
 
+use Swoole\Coroutine\System;
 use Swoole\Coroutine\WaitGroup;
 
 $wg = new WaitGroup();
@@ -8,19 +9,19 @@ go(static function () use ($wg) {
     $wg->add(3);
 
     go(static function () use ($wg) {
-        co::sleep(3);
+        System::sleep(3);
         echo "T1\n";
         $wg->done();
     });
 
     go(static function () use ($wg) {
-        co::sleep(2);
+        System::sleep(2);
         echo "T2\n";
         $wg->done();
     });
 
     go(static function () use ($wg) {
-        co::sleep(1);
+        System::sleep(1);
         echo "T3\n";
         $wg->done();
     });
