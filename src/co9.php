@@ -3,17 +3,17 @@
 use Swoole\Coroutine\System;
 use Swoole\Coroutine\WaitGroup;
 
-$counter = 0;
+$count = 0;
 
-go(static function() use(&$counter) {
+go(static function() use(&$count) {
     $wg = new WaitGroup();
 
     for ($i = 0; $i < 5000; $i++) {
         $wg->add(1);
 
-        go(static function () use($wg, &$counter) {
+        go(static function () use($wg, &$count) {
             System::sleep(1);
-            $counter++;
+            $count++;
 
             $wg->done();
         });
@@ -21,5 +21,5 @@ go(static function() use(&$counter) {
 
     $wg->wait();
 
-    echo $counter;
+    echo $count;
 });

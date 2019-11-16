@@ -2,15 +2,15 @@
 
 use Swoole\Coroutine\System;
 
-$counter = 0;
+$count = 0;
 
-Co\run(static function() use(&$counter) {
+Co\run(static function() use(&$count) {
     for ($i = 0; $i < 5000; $i++) {
-        go(static function () use(&$counter) {
+        go(static function () use(&$count) {
             System::sleep(1);
-            $counter++;
+            $count++;
         });
     }
 });
 
-echo $counter;
+echo $count;
